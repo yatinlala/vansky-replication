@@ -2,41 +2,57 @@
 
 ## Setup
 
-Open a terminal and navigate to an empty directory.
+The following directions should be followed sequentially:
 
-Download the language model:
+- Open a terminal and navigate to an empty directory.
 
-`git clone 'https://github.com/vansky/neural-complexity.git'`
+- Download the language model:
 
-Download the natural stories corpus:
+    `git clone 'https://github.com/vansky/neural-complexity.git'`
 
-`git clone 'git@github.com:yatinlala/vansky-replication.git'`
+- Download the natural stories corpus:
 
-Download the Wikitext corpus from Gulordava's "Colorless Green RNNs" [GitHub page](https://github.com/facebookresearch/colorlessgreenRNNs/tree/main/data):
-```
-mkdir full-wikitext
-cd full-wikitext
-wget 'https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/English/train.txt'
-wget 'https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/English/valid.txt'
-wget 'https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/English/test.txt'
-wget 'https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/English/vocab.txt'
-cd ..
-```
+    `git clone 'git@github.com:yatinlala/vansky-replication.git'`
 
-Move natural stories and wikitext corpora into language model `data` directory:
-```
-mv full-wikitext neural-compexity/data/
-mv vansky-replication/natstor neural-complexity/data/`
-```
+- Download the Wikitext corpus from Gulordava's "Colorless Green RNNs" [GitHub page](https://github.com/facebookresearch/colorlessgreenRNNs/tree/main/data):
+    ```
+    mkdir full-wikitext
+    cd full-wikitext
+    wget 'https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/English/train.txt'
+    wget 'https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/English/valid.txt'
+    wget 'https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/English/test.txt'
+    wget 'https://dl.fbaipublicfiles.com/colorless-green-rnns/training-data/English/vocab.txt'
+    cd ..
+    ```
 
-Make directories to store models and logs:
-`mkdir logs`
-`mkdir models`
+- Move natural stories and wikitext corpora into language model `data` directory:
 
+    `mv full-wikitext vansky-replication/natstor neural-compexity/data/`
+
+- Make directories to store models and logs:
+
+    `mkdir logs models`
 
 ## Train model
 
 From the `neural-complexity` directory, run:
-```
-time python3 main.py --model_file 'full_wikitext.pt' --vocab_file './data/' --tied --cuda --data_dir './data/full-wikitext/' --trainfname 'train.txt' --validfname 'valid.txt' >> logs/FULL-WIKITEXT.TRAIN
-```
+
+`time python3 main.py --model_file 'models/full_wikitext.pt' --vocab_file './data/' --tied --cuda --data_dir './data/full-wikitext/' --trainfname 'train.txt' --validfname 'valid.txt' > logs/FULL-WIKITEXT.TRAIN`
+
+##  Obtain incremental complexity estimates
+
+From the `neural-complexity` directory, run:
+
+`time python3 main.py --model_file 'models/full-wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --cuda --single --data_dir './data/natstor/' --testfname 'naturalstories.linetoks' --test --words > logs/FULL-WIKITEXT.SURPRISAL`
+
+## Adapt model to natural stories corpus
+
+From the `neural-complexity` directory, run:
+
+`time python main.py --model_file 'models/full_wikitext.pt' --vocab_file './data/actual-wikitext/vocab.txt' --cuda --single --data_dir './data/natstor/' --testfname 'naturalstories.linetoks' --test --words --adapt --adapted_model 'models/wikitext.naturalcorpus.1.pt' > logs/FULL-WIKITEXT.NATURALCORPUS.1.SURPISAL`
+
+
+## Misc
+
+Use model interactively
+`time python3 main.py --model_file 'models/full_wikitext.pt' --vocab_file './data/actual-wikitext/vocab.txt' --cuda --interact`
