@@ -12,7 +12,7 @@ The following directions should be followed sequentially:
 
 - Download the natural stories corpus:
 
-    `git clone 'git@github.com:yatinlala/vansky-replication.git'`
+    `git clone 'https://github.com/yatinlala/vansky-replication.git'`
 
 - Download the Wikitext corpus from Gulordava's "Colorless Green RNNs" [GitHub page](https://github.com/facebookresearch/colorlessgreenRNNs/tree/main/data):
     ```
