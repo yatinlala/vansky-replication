@@ -30,9 +30,10 @@ The following directions should be followed sequentially:
     `mv full-wikitext vansky-replication/natstor neural-compexity/data`
 
 - Make directories to store models and logs:
-
-    `mkdir logs models`
-
+    ```
+    cd neural-complexity
+    mkdir logs models
+    ```
 ## Train model
 
 From the `neural-complexity` directory, run:
