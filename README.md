@@ -26,9 +26,10 @@ The following directions should be followed sequentially:
     ```
 
 - Move natural stories and wikitext corpora into language model `data` directory:
-
-    `mv full-wikitext vansky-replication/natstor neural-complexity/data`
-
+    ```
+    mv full-wikitext vansky-replication/natstor
+    cp neural-complexity/data vansky-replication/natstor
+    ```
 - Make directories to store models and logs:
     ```
     cd neural-complexity
