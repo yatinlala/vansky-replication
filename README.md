@@ -51,10 +51,10 @@ From the `neural-complexity` directory, run:
 
 From the `neural-complexity` directory, run:
 
-`time python3 main.py --model_file 'models/full_wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --cuda --single --data_dir './data/natstor/' --testfname 'naturalstories.linetoks' --test --words --adapt --adapted_model 'models/wikitext.naturalcorpus.1.pt' > logs/FULL-WIKITEXT.NATURALCORPUS.1.SURPISAL`
+`time python3 main.py --model_file './models/full_wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --cuda --single --data_dir './data/natstor/' --testfname 'naturalstories.linetoks' --test --words --adapt --adapted_model 'models/wikitext.naturalcorpus.1.pt' > logs/FULL-WIKITEXT.NATURALCORPUS.1.SURPISAL`
 
 
 ## Misc
 
 Use model interactively
-`time python3 main.py --model_file 'models/full_wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --cuda --interact`
+`time python3 main.py --model_file './models/full_wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --cuda --interact`
