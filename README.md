@@ -39,13 +39,13 @@ The following directions should be followed sequentially:
 
 From the `neural-complexity` directory, run:
 
-`time python3 main.py --model_file 'models/full_wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --tied --cuda --data_dir './data/full-wikitext/' --trainfname 'train.txt' --validfname 'valid.txt' > logs/FULL-WIKITEXT.TRAIN`
+`time python3 main.py --model_file './models/full_wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --tied --cuda --data_dir './data/full-wikitext/' --trainfname 'train.txt' --validfname 'valid.txt' > logs/FULL-WIKITEXT.TRAIN`
 
 ##  Obtain incremental complexity estimates
 
 From the `neural-complexity` directory, run:
 
-`time python3 main.py --model_file 'models/full-wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --cuda --single --data_dir './data/natstor/' --testfname 'naturalstories.linetoks' --test --words > logs/FULL-WIKITEXT.SURPRISAL`
+`time python3 main.py --model_file './models/full-wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --cuda --single --data_dir './data/natstor/' --testfname 'naturalstories.linetoks' --test --words > logs/FULL-WIKITEXT.SURPRISAL`
 
 ## Adapt model to natural stories corpus
 
