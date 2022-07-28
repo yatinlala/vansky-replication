@@ -39,7 +39,7 @@ The following directions should be followed sequentially:
 
 From the `neural-complexity` directory, run:
 
-`time python3 main.py --model_file './models/full-wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --tied --cuda --data_dir './data/full-wikitext/' --trainfname 'train.txt' --validfname 'valid.txt' > logs/FULL-WIKITEXT.TRAIN`
+`time python3 main.py --model_file './models/full-wikitext.pt' --vocab_file './data/full-wikitext/vocab.txt' --tied --batch_size 128 --lr 2 --dropout .2 --nhid 650 --emsize 650 --cuda --data_dir './data/full-wikitext/' --trainfname 'train.txt' --validfname 'valid.txt' > logs/FULL-WIKITEXT.TRAIN`
 
 ##  Obtain incremental complexity estimates
 
